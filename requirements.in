@@ -11,3 +11,4 @@ psycopg2-binary
 flake8
 black
 isort
+django-allauth
