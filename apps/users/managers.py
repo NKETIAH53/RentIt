@@ -50,6 +50,14 @@ class CustomUserManager(BaseUserManager):
             raise ValueError(
                 _("Email address is required to set up superuser account.")
             )
+        kwargs.setdefault("is_staff", True)
+        kwargs.setdefault("is_superuser", True)
+        kwargs.setdefault("is_active", True)
+
+        if not (kwargs.get("is_staff") and kwargs.get("is_superuser")):
+            raise ValueError(
+                _("is_staff and is_superuser must be set to True for superusers")
+            )
 
         user = self.create_user(
             username=username,
@@ -59,14 +67,6 @@ class CustomUserManager(BaseUserManager):
             password=password,
             **kwargs
         )
-        kwargs.setdefault("is_staff", True)
-        kwargs.setdefault("is_superuser", True)
-        kwargs.setdefault("is_active", True)
-
-        if not (kwargs.get("is_staff") and kwargs.get("is_superuser")):
-            raise ValueError(
-                _("is_staff and is_superuser must be set to True for superusers")
-            )
         
         user.save(using=self._db)
         return user
