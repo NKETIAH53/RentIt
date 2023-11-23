@@ -114,6 +114,7 @@ class Property(TimeStampedModel):
     )
     views = models.IntegerField(verbose_name=_("Total Property Views"), default=0)
     published = PropertyPublishedManager()
+    objects = models.Manager()
 
     class Meta:
         verbose_name = "Property"
