@@ -15,7 +15,7 @@ class PropertySerializer(serializers.ModelSerializer):
             'user',
             'title',
             'slug',
-            'reference_code'
+            'reference_code',
             'description',
             'country',
             'city',
@@ -48,11 +48,10 @@ class PropertyCreateSerializer(serializers.ModelSerializer):
         ]
 
 
-class PropertyViewSerializzer(serializers.ModelSerializer):
+class PropertyViewSerializer(serializers.ModelSerializer):
     class Meta:
         model = PropertyViews
         exclude = [
             'modified_at',
             'pkid'
         ]
-        
