@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  api:
+    build: 
+      context: .
+      dockerfile: ./docker/local/django/DockerFile
+    command: /start
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/mediafiles
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - postgres-db
+    networks:
+      - rentit-react
+
+  postgres-db:
+    image: postgres:15.5-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      -  POSTGRES_USER=${POSTGRES_USER}
+      -  POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    networks:
+      - rentit-react
+
+networks:
+  rentit-react:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
+
+  
