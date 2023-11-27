@@ -14,6 +14,8 @@ certifi==2023.7.22
     # via requests
 cffi==1.16.0
     # via cryptography
+cfgv==3.4.0
+    # via pre-commit
 charset-normalizer==3.3.2
     # via requests
 click==8.1.5
@@ -24,6 +26,8 @@ defusedxml==0.7.1
     # via
     #   python3-openid
     #   social-auth-core
+distlib==0.3.7
+    # via virtualenv
 django==4.2.3
     # via
     #   -r requirements.in
@@ -55,8 +59,12 @@ djangorestframework-simplejwt==5.3.0
     #   djoser
 djoser==2.2.2
     # via -r requirements.in
+filelock==3.13.1
+    # via virtualenv
 flake8==6.0.0
     # via -r requirements.in
+identify==2.5.32
+    # via pre-commit
 idna==3.4
     # via requests
 isort==5.12.0
@@ -65,6 +73,8 @@ mccabe==0.7.0
     # via flake8
 mypy-extensions==1.0.0
     # via black
+nodeenv==1.8.0
+    # via pre-commit
 oauthlib==3.2.2
     # via
     #   requests-oauthlib
@@ -78,7 +88,11 @@ phonenumbers==8.13.16
 pillow==10.0.0
     # via -r requirements.in
 platformdirs==3.8.1
-    # via black
+    # via
+    #   black
+    #   virtualenv
+pre-commit==3.5.0
+    # via -r requirements.in
 psycopg2-binary==2.9.6
     # via -r requirements.in
 pycodestyle==2.10.0
@@ -96,6 +110,8 @@ python3-openid==3.2.0
     # via social-auth-core
 pytz==2023.3
     # via djangorestframework
+pyyaml==6.0.1
+    # via pre-commit
 requests==2.31.0
     # via
     #   requests-oauthlib
@@ -112,3 +128,8 @@ typing-extensions==4.7.1
     # via django-countries
 urllib3==2.1.0
     # via requests
+virtualenv==20.24.1
+    # via pre-commit
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools

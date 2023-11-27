@@ -14,3 +14,4 @@ isort
 djangorestframework-simplejwt
 djoser
 pyJWT
+pre-commit
