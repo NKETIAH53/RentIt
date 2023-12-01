@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   api:
-    build: 
+    build:
       context: .
       dockerfile: ./docker/local/django/DockerFile
     command: /start
@@ -10,8 +10,8 @@ services:
       - .:/app
       - static_volume:/app/staticfiles
       - media_volume:/app/mediafiles
-    ports:
-      - "8000:8000"
+    # ports:     configured to use nginx
+    #   - "8000:8000"
     env_file:
       - .env
     depends_on:
@@ -32,6 +32,21 @@ services:
     networks:
       - rentit-react
 
+  nginx:
+    restart: always
+    depends_on:
+      - api
+    volumes:
+      - static_volume:/app/staticfiles
+      - media_volume:/app/medialiles
+    build:
+      context: ./docker/local/nginx
+      dockerfile: DockerFile
+    ports:
+      - "8080:80"
+    networks:
+      - rentit-react
+
 networks:
   rentit-react:
     driver: bridge
@@ -40,5 +55,3 @@ volumes:
   postgres_data:
   static_volume:
   media_volume:
-
-  
