@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+set -o errexit
+set -o nounset
+
+worker_ready () {
+    celery -A real_estate inspect ping
+}
+
+until worker_ready; do
+    >&2 echo 'Celery workers are not available yet....'
+    sleep 1
+
+done
+>&2 echo 'Celery workers are available now....'
+
+celery -A real_estate flower
