@@ -20,6 +20,17 @@ services:
     networks:
       - rentit-react
 
+  rentit-client:
+    build:
+      context: ./rentit-client
+      dockerfile: DockerFile.dev
+    restart: on-failure
+    volumes:
+      - ./rentit-client:/app
+      - /app/node_modules
+    networks:
+      - rentit-react
+
   postgres-db:
     image: postgres:15.5-alpine
     ports:
