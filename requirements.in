@@ -15,3 +15,10 @@ djangorestframework-simplejwt
 djoser
 pyJWT
 pre-commit
+celery
+redis
+django-celery-email
+flower
+watchdog
+PyYAML
+argh
